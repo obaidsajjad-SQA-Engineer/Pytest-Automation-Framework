@@ -8,7 +8,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '55 14 * * *'
+    - cron: '45 14 * * *'
 
 permissions:
   contents: read
@@ -63,15 +63,11 @@ jobs:
       - name: Run tests
         run: |
           echo "Running tests with pytest"
-          pytest -s --html=report.html --self-contained-html
-        continue-on-error: true  # Continue even if tests fail
-        # Debug: Log pytest status
-        run: |
-          echo "Running pytest command"
           pytest --version
           pytest -s --html=report.html --self-contained-html
-        # Debug: Capture the exit code of pytest to see if the tests failed or passed
-        run: echo "Test run completed with exit code $?"
+          echo "Test run completed with exit code $?"
+        continue-on-error: true  # Continue even if tests fail
+        # Debug: Log pytest status
 
       - name: Upload report
         uses: actions/upload-artifact@v4  # Use the latest v4 version
