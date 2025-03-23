@@ -28,7 +28,7 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest -s --html=report.html --self-contained-html  # Fixed flag typo (self-contained-html)
+          pytest -s --html=report.html --self-contained-html
 
       - name: Upload report
         uses: actions/upload-artifact@v2
