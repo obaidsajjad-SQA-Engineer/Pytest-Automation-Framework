@@ -8,7 +8,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '30 15 * * *'
+    - cron: '25 15 * * *'
       
 jobs:
   run-tests:
@@ -28,9 +28,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests
+      - name: Run tests and generate report
         run: |
-          pytest
+          pytest --html=report.html
 
       - name: Upload report
         uses: actions/upload-artifact@v4
